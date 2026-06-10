@@ -7,6 +7,21 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Mis Tareas" />
   <title>Mis Tareas del Día</title>
+  <link rel="manifest" href="data:application/json,{
+    &quot;name&quot;: &quot;Mis Tareas&quot;,
+    &quot;short_name&quot;: &quot;Tareas&quot;,
+    &quot;start_url&quot;: &quot;.&quot;,
+    &quot;display&quot;: &quot;standalone&quot;,
+    &quot;background_color&quot;: &quot;%230f1117&quot;,
+    &quot;theme_color&quot;: &quot;%230f1117&quot;,
+    &quot;icons&quot;: [{
+      &quot;src&quot;: &quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230f1117'/%3E%3Crect x='140' y='160' width='232' height='24' rx='12' fill='%234f8ef7'/%3E%3Crect x='140' y='220' width='180' height='24' rx='12' fill='%23ffffff' opacity='0.6'/%3E%3Crect x='140' y='280' width='200' height='24' rx='12' fill='%23ffffff' opacity='0.6'/%3E%3Crect x='140' y='340' width='150' height='24' rx='12' fill='%23ffffff' opacity='0.3'/%3E%3C/svg%3E&quot;,
+      &quot;sizes&quot;: &quot;512x512&quot;,
+      &quot;type&quot;: &quot;image/svg+xml&quot;,
+      &quot;purpose&quot;: &quot;any maskable&quot;
+    }]
+  }">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230f1117'/%3E%3Crect x='140' y='160' width='232' height='24' rx='12' fill='%234f8ef7'/%3E%3Crect x='140' y='220' width='180' height='24' rx='12' fill='%23ffffff' opacity='0.6'/%3E%3Crect x='140' y='280' width='200' height='24' rx='12' fill='%23ffffff' opacity='0.6'/%3E%3Crect x='140' y='340' width='150' height='24' rx='12' fill='%23ffffff' opacity='0.3'/%3E%3C/svg%3E">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -124,9 +139,7 @@
       user-select: none;
     }
 
-    .task-card:active {
-      transform: scale(0.98);
-    }
+    .task-card:active { transform: scale(0.98); }
 
     .task-card.done {
       opacity: 0.5;
@@ -164,14 +177,9 @@
       font-weight: 700;
     }
 
-    .task-card.done .checkmark {
-      display: block;
-    }
+    .task-card.done .checkmark { display: block; }
 
-    .task-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .task-info { flex: 1; min-width: 0; }
 
     .task-name {
       font-size: 15px;
@@ -202,36 +210,11 @@
     .tag-med  { background: rgba(234,179,8,0.15);  color: #fbbf24; }
     .tag-low  { background: rgba(34,197,94,0.15);  color: #4ade80; }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 4px 4px 0;
-    }
-
-    .total-time {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .total-time-label { font-size: 13px; color: var(--muted); }
-    .total-time-value { font-size: 20px; font-weight: 700; color: var(--accent); }
-
     footer {
       padding: 16px;
       padding-bottom: max(16px, env(safe-area-inset-bottom));
       background: var(--bg);
       border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
 
     .btn {
@@ -242,25 +225,14 @@
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.01em;
       transition: all 0.2s ease;
       -webkit-tap-highlight-color: transparent;
     }
 
     .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white;
-    }
-
-    .btn-secondary {
-      background: var(--surface2);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -290,18 +262,8 @@
       margin: 0 auto 20px;
     }
 
-    .modal h2 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .modal p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
+    .modal h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .modal p { font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
 
     .report-box {
       background: var(--bg);
@@ -316,11 +278,7 @@
       word-break: break-word;
     }
 
-    .modal-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .modal-actions { display: flex; flex-direction: column; gap: 10px; }
 
     .toast {
       position: fixed;
@@ -340,10 +298,7 @@
       z-index: 200;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     .all-done-banner {
       display: none;
@@ -376,22 +331,18 @@
   </div>
 </header>
 
-<main id="taskList">
-  <!-- Tasks rendered by JS -->
-</main>
-
+<main id="taskList"></main>
 <div class="toast" id="toast"></div>
 
 <footer>
   <button class="btn btn-primary" onclick="openReport()">📋 Generar reporte del día</button>
 </footer>
 
-<!-- Report Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-handle"></div>
     <h2>Reporte del día</h2>
-    <p>Este es tu resumen. Al dar clic en "Enviar a Claude" se abrirá la conversación con el reporte listo para reagendar lo pendiente.</p>
+    <p>Al dar clic en "Enviar a Claude" se abrirá la conversación con el reporte listo para reagendar lo pendiente.</p>
     <div class="report-box" id="reportContent"></div>
     <div class="modal-actions">
       <button class="btn btn-primary" onclick="sendToClaude()">🤖 Enviar a Claude</button>
@@ -401,7 +352,6 @@
 </div>
 
 <script>
-  // ── TAREAS DEL DÍA ──────────────────────────────────────────────
   const tasks = [
     {
       id: 1,
@@ -413,41 +363,30 @@
     }
   ];
 
-  // ── ESTADO ──────────────────────────────────────────────────────
   let state = JSON.parse(localStorage.getItem('checklistState') || '{}');
 
-  // ── FECHA ────────────────────────────────────────────────────────
   const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  const now = new Date();
-  // Usamos mañana para esta prueba (10 de junio)
-  const tomorrow = new Date(now);
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  const today = new Date();
   document.getElementById('dateBadge').textContent =
-    `${days[tomorrow.getDay()]} ${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
+    `${days[today.getDay()]} ${today.getDate()} ${months[today.getMonth()]}`;
 
-  // ── RENDER ───────────────────────────────────────────────────────
   function render() {
     const list = document.getElementById('taskList');
     const done = tasks.filter(t => state[t.id]).length;
     const pct = Math.round((done / tasks.length) * 100);
-
     document.getElementById('progressFill').style.width = pct + '%';
     document.getElementById('progressText').textContent =
       `${done} de ${tasks.length} completada${tasks.length !== 1 ? 's' : ''}`;
     document.getElementById('progressPct').textContent = pct + '%';
 
     const priorityTag = { alta: 'tag-high', media: 'tag-med', baja: 'tag-low' };
-
     let html = '';
-
     tasks.forEach(t => {
       const isDone = !!state[t.id];
       html += `
         <div class="task-card ${isDone ? 'done' : ''}" onclick="toggle(${t.id})">
-          <div class="checkbox">
-            <span class="checkmark">✓</span>
-          </div>
+          <div class="checkbox"><span class="checkmark">✓</span></div>
           <div class="task-info">
             <div class="task-name">${t.name}</div>
             <div class="task-meta">
@@ -458,15 +397,9 @@
           </div>
         </div>`;
     });
-
     if (done === tasks.length) {
-      html += `
-        <div class="all-done-banner show">
-          <div class="emoji">🎉</div>
-          <p>¡Completaste todas las tareas del día!</p>
-        </div>`;
+      html += `<div class="all-done-banner show"><div class="emoji">🎉</div><p>¡Completaste todas las tareas del día!</p></div>`;
     }
-
     list.innerHTML = html;
   }
 
@@ -477,7 +410,6 @@
     render();
   }
 
-  // ── TOAST ────────────────────────────────────────────────────────
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -485,26 +417,22 @@
     setTimeout(() => t.classList.remove('show'), 1800);
   }
 
-  // ── REPORTE ──────────────────────────────────────────────────────
   function openReport() {
     const done = tasks.filter(t => state[t.id]).map(t => `✅ ${t.name}`);
     const pending = tasks.filter(t => !state[t.id]).map(t => `⏳ ${t.name}`);
-    const dateStr = `${days[tomorrow.getDay()]} ${tomorrow.getDate()} de ${months[tomorrow.getMonth()]}`;
-
+    const dateStr = `${days[today.getDay()]} ${today.getDate()} de ${months[today.getMonth()]}`;
     let report = `Reporte del día — ${dateStr}\n\n`;
     if (done.length) report += `COMPLETADAS:\n${done.join('\n')}\n\n`;
     if (pending.length) report += `PENDIENTES:\n${pending.join('\n')}\n\n`;
     if (!pending.length) report += `🎉 ¡Todas las tareas del día completadas!\n\n`;
     report += `Por favor reagenda lo pendiente en Google Calendar con la nota "Pendiente del día anterior".`;
-
     document.getElementById('reportContent').textContent = report;
     document.getElementById('modalOverlay').classList.add('open');
   }
 
   function sendToClaude() {
     const content = document.getElementById('reportContent').textContent;
-    const encoded = encodeURIComponent(content);
-    window.open(`https://claude.ai/new?q=${encoded}`, '_blank');
+    window.open(`https://claude.ai/new?q=${encodeURIComponent(content)}`, '_blank');
     closeModalBtn();
   }
 
